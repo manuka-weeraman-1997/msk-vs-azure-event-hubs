@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/market-price-event.json",
+  "title": "MarketPriceEvent",
+  "description": "A single market price observation published to the market-events topic. The Kafka message key is the value of symbol.",
+  "type": "object",
+  "required": ["event_type", "symbol", "price", "timestamp"],
+  "additionalProperties": false,
+  "properties": {
+    "event_type": {
+      "const": "market-price",
+      "description": "Discriminator for the event type."
+    },
+    "symbol": {
+      "type": "string",
+      "pattern": "^[A-Z]{1,10}$",
+      "description": "Ticker symbol. Used as the partition key."
+    },
+    "price": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Last price in the instrument currency."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC time of the observation, RFC 3339."
+    }
+  },
+  "examples": [
+    {
+      "event_type": "market-price",
+      "symbol": "AAPL",
+      "price": 227.31,
+      "timestamp": "2026-10-05T08:00:00Z"
+    }
+  ]
+}

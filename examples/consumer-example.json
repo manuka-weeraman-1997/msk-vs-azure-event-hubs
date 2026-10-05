@@ -1,0 +1,32 @@
+{
+  "group_id": "search-service",
+  "topic": "market-events",
+  "note": "Illustrative consumer output. Partition numbers depend on the key hash; the point is that the same symbol always arrives from the same partition, in order.",
+  "log": [
+    {
+      "msg": "partitions assigned",
+      "owned": [2],
+      "topic": "market-events"
+    },
+    {
+      "msg": "received",
+      "partition": 2,
+      "offset": 118,
+      "key": "AAPL",
+      "symbol": "AAPL",
+      "price": 227.31
+    },
+    {
+      "msg": "received",
+      "partition": 2,
+      "offset": 119,
+      "key": "AAPL",
+      "symbol": "AAPL",
+      "price": 227.4
+    },
+    {
+      "msg": "partitions revoked",
+      "released": [2]
+    }
+  ]
+}

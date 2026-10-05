@@ -1,0 +1,35 @@
+# Copy to terraform.tfvars and edit. Do not commit real values.
+
+aws_region  = "us-east-1"
+environment = "dev"
+owner       = "platform-engineering"
+
+# Networking (documentation-style example range)
+vpc_cidr                = "10.0.0.0/16"
+az_count                = 3
+additional_client_cidrs = [] # for example ["192.0.2.0/24"] for a peered or VPN network
+
+# Cluster
+cluster_name           = "streaming-msk"
+number_of_broker_nodes = 3
+broker_instance_type   = "kafka.m5.large"
+
+# REQUIRES ACCOUNT CONFIGURATION: choose a version MSK currently supports.
+# Check the MSK documentation or `aws kafka list-kafka-versions`.
+kafka_version = "<supported-kafka-version>"
+
+# Broker configuration
+default_replication_factor = 3
+min_insync_replicas        = 2
+log_retention_hours        = 24
+
+# Encryption and auth
+# REQUIRES ACCOUNT CONFIGURATION: optional customer-managed key.
+# kms_key_arn = "arn:aws:kms:us-east-1:<account-id>:key/<key-id>"
+enable_mutual_tls = false
+enable_sasl_scram = false
+
+# Monitoring
+enhanced_monitoring = "PER_BROKER"
+# REQUIRES ACCOUNT CONFIGURATION: existing SNS topic for alarm notifications.
+# sns_topic_arn = "arn:aws:sns:us-east-1:<account-id>:<topic-name>"

@@ -1,0 +1,29 @@
+flowchart LR
+    subgraph AWS["AWS: Amazon MSK"]
+        direction TB
+        A1["Kafka Producer"] --> A2["VPC, subnets,<br/>security groups"]
+        A2 --> A3["Amazon MSK cluster"]
+        A3 --> A4["Kafka Topic"]
+        A4 --> A5["Partitions"]
+        A5 --> A6["Consumer group"]
+        A6 --> A7["Consumers"]
+        A3 -.-> A8["CloudWatch"]
+    end
+    subgraph AZ["Azure: Event Hubs"]
+        direction TB
+        B1["Event Producer"] --> B2["VNet, Private Endpoint,<br/>Private DNS"]
+        B2 --> B3["Event Hubs Namespace"]
+        B3 --> B4["Event Hub"]
+        B4 --> B5["Partitions"]
+        B5 --> B6["Consumer group"]
+        B6 --> B7["Consumers"]
+        B3 -.-> B8["Azure Monitor"]
+    end
+    A1 -.- B1
+    A2 -.- B2
+    A3 -.- B3
+    A4 -.- B4
+    A5 -.- B5
+    A6 -.- B6
+    A7 -.- B7
+    A8 -.- B8

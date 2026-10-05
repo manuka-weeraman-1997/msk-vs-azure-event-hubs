@@ -1,0 +1,24 @@
+# Kafka CLI client properties (placeholders only). Copy to client.properties,
+# keep ONE section, and never commit the real file.
+
+# ---------------------------------------------------------------------------
+# SECTION 1: Amazon MSK with IAM access control (port 9098)
+# Requires the aws-msk-iam-auth library on the Kafka CLI classpath.
+# Credentials come from the AWS provider chain (env vars, profile, role).
+# ---------------------------------------------------------------------------
+security.protocol=SASL_SSL
+sasl.mechanism=AWS_MSK_IAM
+sasl.jaas.config=software.amazon.msk.auth.iam.IAMLoginModule required;
+sasl.client.callback.handler.class=software.amazon.msk.auth.iam.IAMClientCallbackHandler
+# Use with: --bootstrap-server <broker-1>:9098
+
+# ---------------------------------------------------------------------------
+# SECTION 2: Azure Event Hubs Kafka endpoint (port 9093)
+# Comment out Section 1 and uncomment the lines below.
+# Microsoft Entra ID (OAuth) is the preferred option where your client supports
+# it; the connection string (SAS) below is the simple path.
+# Use with: --bootstrap-server <namespace>.servicebus.windows.net:9093
+# ---------------------------------------------------------------------------
+# security.protocol=SASL_SSL
+# sasl.mechanism=PLAIN
+# sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="<EVENTHUBS_CONNECTION_STRING>";

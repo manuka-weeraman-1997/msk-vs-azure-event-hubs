@@ -1,0 +1,39 @@
+# Copy to terraform.tfvars (git-ignored). Placeholders only; never commit real values.
+
+# REQUIRES ACCOUNT CONFIGURATION: or export ARM_SUBSCRIPTION_ID instead.
+# subscription_id = "<subscription-id>"
+
+project     = "market-data"
+environment = "prod"
+location    = "eastus"
+
+create_resource_group = true
+# resource_group_name = "<existing-resource-group>"
+
+# REQUIRES ACCOUNT CONFIGURATION: namespace names are globally unique.
+namespace_name = "streaming-prod"
+sku            = "Standard"
+capacity       = 1
+
+public_network_access_enabled = true
+local_authentication_enabled  = true
+
+topics = {
+  "market-events" = {
+    partition_count        = 4
+    message_retention_days = 1
+    consumer_groups        = ["search-service", "analytics"]
+  }
+}
+
+# Optional Private Endpoint
+enable_private_endpoint        = false
+vnet_address_space             = ["10.0.0.0/16"]
+private_endpoint_subnet_prefix = "10.0.1.0/24"
+
+# Microsoft Entra object IDs
+sender_principal_ids   = []
+receiver_principal_ids = []
+
+alert_email_addresses = []
+log_retention_days    = 30

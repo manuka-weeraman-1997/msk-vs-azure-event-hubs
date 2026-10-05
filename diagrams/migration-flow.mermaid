@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph SRC["AWS source"]
+        S1["Producers"] --> S2["Amazon MSK<br/>market-events"]
+        S2 --> S3["Consumers<br/>search-service"]
+    end
+    subgraph PH["Migration phases"]
+        direction TB
+        M1["1. Inventory"] --> M2["2. Recreate as event hubs<br/>from code"]
+        M2 --> M3["3. Dual-write or mirror"]
+        M3 --> M4["4. Validate"]
+        M4 --> M5["5. Cut over"]
+        M5 --> M6["6. Decommission<br/>or roll back"]
+    end
+    subgraph TGT["Azure target"]
+        T1["Producers"] --> T2["Event Hubs Namespace<br/>Event Hub market-events"]
+        T2 --> T3["Consumers<br/>search-service"]
+    end
+    S2 -.-> M1
+    M3 -.-> T2
+    M5 -.-> T3
+    M6 -.-> T1

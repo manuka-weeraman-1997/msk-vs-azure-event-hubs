@@ -1,0 +1,42 @@
+{
+  "topic": "market-events",
+  "note": "Events as sent by the producer. The Kafka message key equals symbol.",
+  "events": [
+    {
+      "key": "AAPL",
+      "value": {
+        "event_type": "market-price",
+        "symbol": "AAPL",
+        "price": 227.31,
+        "timestamp": "2026-10-05T08:00:00Z"
+      }
+    },
+    {
+      "key": "MSFT",
+      "value": {
+        "event_type": "market-price",
+        "symbol": "MSFT",
+        "price": 415.62,
+        "timestamp": "2026-10-05T08:00:00Z"
+      }
+    },
+    {
+      "key": "AAPL",
+      "value": {
+        "event_type": "market-price",
+        "symbol": "AAPL",
+        "price": 227.4,
+        "timestamp": "2026-10-05T08:00:01Z"
+      }
+    },
+    {
+      "key": "GOOG",
+      "value": {
+        "event_type": "market-price",
+        "symbol": "GOOG",
+        "price": 178.12,
+        "timestamp": "2026-10-05T08:00:01Z"
+      }
+    }
+  ]
+}

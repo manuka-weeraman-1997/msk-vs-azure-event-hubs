@@ -1,0 +1,16 @@
+# Copy to config/config.yaml and set CONFIG_FILE=config/config.yaml.
+# Environment variables override these values. Secrets are NEVER read from this
+# file: set EVENTHUBS_CONNECTION_STRING in the environment (or a secret store).
+
+platform: msk                 # msk | eventhubs
+topic: market-events          # Kafka topic on MSK, event hub name on Event Hubs
+client_id: market-producer
+
+# MSK (port 9098 = TLS + IAM)
+bootstrap_servers: "<broker-1>:9098,<broker-2>:9098,<broker-3>:9098"
+aws_region: us-east-1
+
+# Event Hubs: set platform: eventhubs and either bootstrap_servers
+# ("<namespace>.servicebus.windows.net:9093") or just the namespace below.
+# Namespace names are globally unique; "streaming-prod" is a placeholder.
+# eventhubs_namespace: <namespace>

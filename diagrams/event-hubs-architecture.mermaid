@@ -1,0 +1,22 @@
+flowchart TD
+    APP["Market Data Application"] --> PROD["Event Producer<br/>Kafka, AMQP or HTTPS"]
+    PROD -->|"TLS + Entra ID / SAS"| NET["VNet, Private Endpoint,<br/>Private DNS"]
+    NET --> NS["Event Hubs Namespace<br/>streaming-prod"]
+    NS --> EH["Event Hub<br/>market-events"]
+    EH --> P0["P0"]
+    EH --> P1["P1"]
+    EH --> P2["P2"]
+    EH --> P3["P3"]
+    P0 --> CG["Consumer group<br/>search-service"]
+    P1 --> CG
+    P2 --> CG
+    P3 --> CG
+    CG --> C1["C1"]
+    CG --> C2["C2"]
+    CG --> C3["C3"]
+    CG --> C4["C4"]
+    C1 --> DS["Downstream:<br/>search / analytics / app"]
+    C2 --> DS
+    C3 --> DS
+    C4 --> DS
+    NS -.-> AM["Azure Monitor"]

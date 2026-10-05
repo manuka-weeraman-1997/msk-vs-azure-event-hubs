@@ -1,0 +1,4 @@
+# Minimum versions; pin exact versions (pip-compile or a lock file) for production.
+confluent-kafka>=2.3.0
+aws-msk-iam-sasl-signer-python>=1.0.1
+PyYAML>=6.0

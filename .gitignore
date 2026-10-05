@@ -1,0 +1,35 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+terraform.tfvars
+*.auto.tfvars
+override.tf
+override.tf.json
+
+# Secrets and local config (examples end in .example and are committed)
+.env
+.env.*
+secrets.*
+*.pem
+*.key
+producer/config/config.yaml
+consumer/config/config.yaml
+kafka/configs/client.properties
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

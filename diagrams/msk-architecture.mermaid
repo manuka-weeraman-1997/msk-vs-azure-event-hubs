@@ -1,0 +1,22 @@
+flowchart TD
+    APP["Market Data Application"] --> PROD["Kafka Producer"]
+    PROD -->|"TLS + SASL/IAM"| NET["VPC, private subnets,<br/>security groups"]
+    NET --> MSK["Amazon MSK<br/>streaming-msk"]
+    MSK --> TOPIC["Kafka Topic<br/>market-events"]
+    TOPIC --> P0["P0"]
+    TOPIC --> P1["P1"]
+    TOPIC --> P2["P2"]
+    TOPIC --> P3["P3"]
+    P0 --> CG["Consumer group<br/>search-service"]
+    P1 --> CG
+    P2 --> CG
+    P3 --> CG
+    CG --> C1["C1"]
+    CG --> C2["C2"]
+    CG --> C3["C3"]
+    CG --> C4["C4"]
+    C1 --> DS["Downstream:<br/>search / analytics / app"]
+    C2 --> DS
+    C3 --> DS
+    C4 --> DS
+    MSK -.-> CW["CloudWatch"]
