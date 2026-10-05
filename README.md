@@ -24,7 +24,7 @@ The same market-data flow is described, coded and deployed on both sides: a prod
 
 This repository accompanies the LinkedIn post explaining the end-to-end architecture and data flow between Amazon MSK and Azure Event Hubs.
 
-🔗 LinkedIn Post: [Add LinkedIn post URL here]
+🔗 LinkedIn Post: [Amazon MSK vs Azure Event Hubs on LinkedIn](https://lnkd.in/p/g3fnS6M8)
 
 🎬 Architecture Visualization: [MSK vs Event Hubs animated GIF](./docs/images/msk-vs-event-hubs.gif)
 
