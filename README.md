@@ -28,6 +28,8 @@ This repository accompanies the LinkedIn post explaining the end-to-end architec
 
 🎬 Architecture Visualization: [MSK vs Event Hubs animated GIF](./docs/images/msk-vs-event-hubs.gif)
 
+📝 Medium article: [Amazon MSK vs Azure Event Hubs: Same Event Flow, Different Engines](https://medium.com/@manukaweeraman/amazon-msk-vs-azure-event-hubs-same-event-flow-different-engines-46dcf08bd828)
+
 ![MSK vs Event Hubs data flow](./docs/images/msk-vs-event-hubs.gif)
 
 The GIF lives in [`docs/images/`](./docs/images/README.md). Replace it there if you re-render the animation.
